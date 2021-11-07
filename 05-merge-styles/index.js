@@ -9,7 +9,7 @@ const createBundle = async () => {
         if (path.extname(file) === '.css') {
             let stream = fs.createReadStream(path.resolve(__dirname, 'styles', file), 'utf-8')
             for await (const chunk of stream) {
-                data += chunk
+                data += chunk +'\n'
             }
         }
     }

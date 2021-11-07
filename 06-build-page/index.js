@@ -52,7 +52,7 @@ const createCSS = async () => {
     for (const file of files) {
         let stream = fs.createReadStream(path.resolve(__dirname, 'styles', file), 'utf-8')
         for await (const chunk of stream) {
-            bundle += chunk
+            bundle += chunk +'\n'
         }
     }
     const output = fs.createWriteStream(pathToOutput)

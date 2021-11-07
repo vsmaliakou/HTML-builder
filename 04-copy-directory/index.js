@@ -2,7 +2,8 @@ const fs = require('fs')
 const path = require('path')
 
 const copyDir = async () => {
-    await fs.mkdir(path.resolve(__dirname, 'files-copy'), { recursive: true }, error => {
+    await fs.promises.rm(path.resolve(__dirname, 'files-copy'), { recursive: true, force: true });
+    await fs.promises.mkdir(path.resolve(__dirname, 'files-copy'), { recursive: true }, error => {
         if (error) return console.error(error.message)
     })
     const files = await fs.promises.readdir(path.resolve(__dirname, 'files'))
